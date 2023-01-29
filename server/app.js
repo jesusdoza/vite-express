@@ -42,7 +42,6 @@ app.set("view engine", "ejs"); // for template
 app.use(express.static("public")); //use templates from folder
 app.use(express.urlencoded({ extended: true })); //get body data
 app.use(express.json());
-// app.use(logger("dev"));
 
 //Sessions
 //express sessions must be before passport
