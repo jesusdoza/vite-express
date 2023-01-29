@@ -1,0 +1,26 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-client": "npm --prefix client run dev",
+    "start-backend": "npm --prefix server run dev",
+    "dev": "concurrently \"npm:start-client\" \"npm:start-backend\"",
+    "subinstalls": "(cd ./ && npm install) && (cd server && npm install) && (cd ../client && npm install) "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jesusdoza/ReactGoof.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jesusdoza/ReactGoof/issues"
+  },
+  "homepage": "https://github.com/jesusdoza/ReactGoof#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
