@@ -5,7 +5,7 @@ import Login from "./components/Login";
 import NavLayout from "./components/NavLayout";
 import Protected from "./components/Protected";
 import Home from "./pages/Home";
-
+import Register from "./pages/Register";
 
 function App() {
     const [loginEmail, setLoginEmail] = useState("");
@@ -46,7 +46,7 @@ function App() {
     return (
         <>
             <Routes>
-                <Route path="signup" element={<SignupForm />} />
+                <Route path="signup" element={<Register />} />
                 <Route
                     path="/login"
                     element={
