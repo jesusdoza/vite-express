@@ -62,8 +62,6 @@ module.exports.logout = (req, res) => {
 
 /// POST signup
 exports.postSignup = (req, res, next) => {
-    //checking to see if password ect match
-
     console.log(`signup body`, req.body);
     const validationErrors = [];
     if (!validator.isEmail(req.body.email))

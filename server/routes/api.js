@@ -1,10 +1,6 @@
 const Router = require("express").Router();
 const apiController = require("../controllers/apiController.js");
-const {
-    ensureAuth,
-    ensureGuest,
-    ensureAuthApi,
-} = require("../middleware/auth");
+const { ensureAuthApi } = require("../middleware/auth");
 
 const apiAuthController = require("../controllers/apiAuthController");
 

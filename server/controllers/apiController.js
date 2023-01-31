@@ -1,7 +1,6 @@
 const { response } = require("express");
 const Parts = require("../models/Part");
 const Items = require("../models/Item");
-const { update } = require("../models/User");
 
 module.exports.test = async (req, res) => {
     console.log(req.body);
