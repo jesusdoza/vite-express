@@ -1,5 +1,5 @@
 import passport from "passport";
-import { User } from "../models/User.js";
+import { User } from "../models/User.mjs";
 import validator from "validator";
 
 export const postLogin = (req, res, next) => {

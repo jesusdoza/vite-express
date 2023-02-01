@@ -8,21 +8,27 @@ import { mainRoutes } from "./routes/main.mjs";
 
 ///authentication packages
 // const passport = require("passport");
+import passport from "passport";
 // const MongoStore = require("connect-mongo"); //session store
+import MongoStore from "connect-mongo";
 // const session = require("express-session");
+import session from "express-session";
 
-// const logger = require("morgan");
 import morgan from "morgan";
-// const cors = require("cors");
+
 import cors from "cors";
 // const MethodOverride = require("method-override");
 // const HttpsRedirect = require('./middleware/httpsRedirect')//!not used yet
 
 //enviroment vars
-// require("dotenv").config({ path: "./config/.env" });
+/// require("dotenv").config({ path: "./config/.env" });
+import dotenv from "dotenv";
+dotenv.config({ path: "./config/.env" });
+/// passport config
+/// require("./config/passport")(passport);
 
-// passport config
-// require("./config/passport")(passport);
+import passportConfig from "./config/passport.mjs";
+passportConfig(passport);
 
 const PORT = 8000;
 
@@ -52,27 +58,27 @@ app.use(express.urlencoded({ extended: true })); //get body data
 app.use(express.json());
 
 //Sessions
-//express sessions must be before passport
-// app.use(
-//     session({
-//         //! change secret
-//         secret: process.env.sessionSecret,
-//         rolling: true, //refresh token every time user interacts
-//         resave: false,
-//         saveUninitialized: false, //dont create until something to save
-//         store: MongoStore.create({
-//             mongoUrl: process.env.connectStr,
-//         }),
-//         cookie: {
-//             maxAge: 15 * 60 * 1000,
-//             secure: false, //needs false local dev enviroment
-//         },
-//     })
-// );
+// express sessions must be before passport
+app.use(
+    session({
+        //! change secret
+        secret: process.env.sessionSecret,
+        rolling: true, //refresh token every time user interacts
+        resave: false,
+        saveUninitialized: false, //dont create until something to save
+        store: MongoStore.create({
+            mongoUrl: process.env.connect_string,
+        }),
+        cookie: {
+            maxAge: 15 * 60 * 1000,
+            secure: false, //needs false local dev enviroment
+        },
+    })
+);
 
 //passport middleware
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
 //// ROUTES
 

@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { postLogin } from "../controllers/apiAuthController.mjs";
 
 ///api login
 const router = Router();
@@ -8,10 +9,7 @@ router.get("/", (req, res) => {
     res.send("login route");
 });
 
-router.post("/", (req, res) => {
-    console.log("login route");
-    res.send("login");
-});
+router.post("/", postLogin);
 router.post("/signup", (req, res) => {
     console.log("signup route");
 });
