@@ -12,6 +12,7 @@ import { mainRoutes } from "./routes/main.mjs";
 // const session = require("express-session");
 
 // const logger = require("morgan");
+import morgan from "morgan";
 // const cors = require("cors");
 import cors from "cors";
 // const MethodOverride = require("method-override");
@@ -36,6 +37,7 @@ const PORT = 8000;
 //     // app.use(HttpsRedirect)
 // }
 
+app.use(morgan("tiny"));
 /// for react need to set origin allowed
 app.use(
     cors({

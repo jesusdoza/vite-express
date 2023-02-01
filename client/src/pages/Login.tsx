@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "../services/axios";
 
 function Login() {
     const navigate = useNavigate();
@@ -9,15 +10,8 @@ function Login() {
 
     async function handleLogin() {
         // const result = await loginUser();
-        const result = "test";
-        console.log(result);
-        if (result) {
-            console.log(`login sucess at login component`);
-            // navigate("/inventory");
-        } else {
-            console.log("problem loggin in");
-            setErrorFlag(true);
-        }
+        console.log("handle login");
+        const result = await axios.post("/login");
     }
 
     return (
