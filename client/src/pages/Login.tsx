@@ -9,9 +9,12 @@ function Login() {
     let password = "";
 
     async function handleLogin() {
-        // const result = await loginUser();
-        console.log("handle login");
-        const result = await axios.post("/login");
+        const result = await axios.post("/login", {
+            email,
+            password,
+        });
+
+        console.log(result);
     }
 
     return (
