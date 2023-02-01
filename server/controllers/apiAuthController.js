@@ -1,8 +1,8 @@
-const passport = require("passport");
-const User = require("../models/User");
-const validator = require("validator");
+import passport from "passport";
+import { User } from "../models/User.js";
+import validator from "validator";
 
-module.exports.postLogin = (req, res, next) => {
+export const postLogin = (req, res, next) => {
     console.log(`API POST LOGIN*********************************************`);
     console.log(req.body);
 
@@ -38,7 +38,7 @@ module.exports.postLogin = (req, res, next) => {
     })(req, res, next);
 };
 
-module.exports.logout = (req, res) => {
+export const logout = (req, res) => {
     console.log(`logout**************************************`);
 
     try {
@@ -61,7 +61,7 @@ module.exports.logout = (req, res) => {
 };
 
 /// POST signup
-exports.postSignup = (req, res, next) => {
+export const postSignup = (req, res, next) => {
     console.log(`signup body`, req.body);
     const validationErrors = [];
     if (!validator.isEmail(req.body.email))
@@ -115,6 +115,6 @@ exports.postSignup = (req, res, next) => {
     );
 };
 
-exports.isLoggedIn = (req, res) => {
+export const isLoggedIn = (req, res) => {
     return res.status(200).json({ isLoggedIn: true });
 };

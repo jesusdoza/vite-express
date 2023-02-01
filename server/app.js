@@ -1,12 +1,19 @@
 import express from "express";
 const app = express();
+import { mainRoutes } from "./routes/main.mjs";
+// const mainR = express.Router();
+
 // const mongoose = require("mongoose");
+// const flash = require("express-flash");
+
+///authentication packages
 // const passport = require("passport");
 // const MongoStore = require("connect-mongo"); //session store
-// const flash = require("express-flash");
 // const session = require("express-session");
+
 // const logger = require("morgan");
 // const cors = require("cors");
+import cors from "cors";
 // const MethodOverride = require("method-override");
 // const HttpsRedirect = require('./middleware/httpsRedirect')//!not used yet
 
@@ -30,15 +37,14 @@ const PORT = 8000;
 // }
 
 /// for react need to set origin allowed
-// app.use(
-//     cors({
-//         origin: "http://localhost:5173",
-//         credentials: true,
-//     })
-// );
+app.use(
+    cors({
+        origin: "http://localhost:5173",
+        credentials: true,
+    })
+);
 // app.use(MethodOverride("_method"));
 
-app.set("view engine", "ejs"); // for template
 app.use(express.static("public")); //use templates from folder
 app.use(express.urlencoded({ extended: true })); //get body data
 app.use(express.json());
@@ -67,12 +73,10 @@ app.use(express.json());
 // app.use(passport.session());
 
 //// ROUTES
-app.get("/", (req, res) => {
+
+app.use("/login", mainRoutes);
+
+app.use("/", (req, res) => {
     res.send("server working");
 });
-
-// app.listen(process.env.PORT || PORT, () => {
-//     console.log(`server on ${PORT}`);
-// });
-
 export default app;

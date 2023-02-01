@@ -1,28 +1,19 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-type loginProps = {
-    setLoginPassword: (value: string) => void;
-    setLoginEmail: (value: string) => void;
-    loginUser: () => Promise<boolean>;
-    setLoggedInUser: React.Dispatch<React.SetStateAction<string>>;
-};
-
-function Login({
-    setLoginEmail,
-    setLoginPassword,
-    loginUser,
-    setLoggedInUser,
-}: loginProps) {
+function Login() {
     const navigate = useNavigate();
     const [errorFlag, setErrorFlag] = useState(false);
+    let email = "";
+    let password = "";
 
     async function handleLogin() {
-        const result = await loginUser();
+        // const result = await loginUser();
+        const result = "test";
         console.log(result);
         if (result) {
-            // console.log(`login sucess at login component`)
-            navigate("/inventory");
+            console.log(`login sucess at login component`);
+            // navigate("/inventory");
         } else {
             console.log("problem loggin in");
             setErrorFlag(true);
@@ -51,7 +42,7 @@ function Login({
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => {
-                                setLoginEmail(event.target.value);
+                                email = event.target.value;
                             }}
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             placeholder="Username"
@@ -68,7 +59,7 @@ function Login({
                             onChange={(
                                 event: React.ChangeEvent<HTMLInputElement>
                             ) => {
-                                setLoginPassword(event.target.value);
+                                password = event.target.value;
                             }}
                             name="password"
                             id="password"
